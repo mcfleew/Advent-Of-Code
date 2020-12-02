@@ -1,6 +1,6 @@
 <?php 
 
-$input = file('../input');
+$input = array_map('trim', file('../input'));
 
 $inputX = $inputY = $inputZ = array_map('intval', $input);
 
