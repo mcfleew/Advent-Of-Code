@@ -1,6 +1,6 @@
 <?php 
 
-$input = array_map('trim', file('../input'));
+$input = array_map('trim', file('../../input'));
 
 $passwordsValid = 0;
 
