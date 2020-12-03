@@ -9,12 +9,14 @@ function testSlope($step = 1, $bottomStep = 1) {
     $repeat = 2;
 
     foreach ($input as $key => $row) {
+        // Skip rows if needed DownStep
         if ($rowToSkip = ($key % $bottomStep > 0)) {
             continue;
         }
-        $output[$key][$index] = TOKEN_IF_OK;
         $debug[intval($bottomStep).$step][$key] = $index;
+        $output[$key][$index] = TOKEN_IF_OK;
         
+        // Repeat map's pattern if index greater than map length
         if ($index >= strlen($row)) {
             $row = str_repeat($row, $repeat); // $index -= count($map) - 1;
             $repeat++;
@@ -22,6 +24,7 @@ function testSlope($step = 1, $bottomStep = 1) {
     
         $map = str_split($row);
     
+        // Looking for trees depend of RightStep and DownStep defined by actual slope
         if ($map[$index] === '#') {
             $output[$key][$index] = TOKEN_IF_KO;
             $countTrees++;
@@ -52,6 +55,7 @@ $output = array_fill_keys(range(0, ROWS_TO_SHOW), array_fill_keys(range(0, COLS_
 
 echo (testSlope() * testSlope(3) * testSlope(5) * testSlope(7) * testSlope(1, 2)).str_repeat(PHP_EOL, 2);
 
+// Show map
 $i = 0;
 array_map(function ($map) {
     global $i;
