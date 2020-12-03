@@ -4,16 +4,14 @@ $input = array_map('trim', file('../../input'));
 
 $debug = [];
 
-function testSlope($step = 1, $bottomStep = false) {
+function testSlope($step = 1, $bottomStep = 1) {
     global $input, $debug;
 
     $index = $countTrees = 0;
     $repeat = 2;
-    $rowToSkip = false;
 
     foreach ($input as $key => $row) {
-        if ($rowToSkip) {
-            $rowToSkip = false;
+        if ($rowToSkip = ($key % $bottomStep > 0)) {
             continue;
         }
         $debug[intval($bottomStep).$step][$key] = $index;
@@ -29,10 +27,6 @@ function testSlope($step = 1, $bottomStep = false) {
             $countTrees++;
         }
         $index += $step;
-
-        if ($bottomStep) {
-            $rowToSkip = true;
-        }
     }
 
     return $countTrees;
@@ -42,8 +36,8 @@ function testSlope($step = 1, $bottomStep = false) {
 // echo testSlope(3).PHP_EOL;
 // echo testSlope(5).PHP_EOL;
 // echo testSlope(7).PHP_EOL;
-// echo testSlope(1, true).PHP_EOL;
+// echo testSlope(1, 2).PHP_EOL;
 
-echo (testSlope() * testSlope(3) * testSlope(5) * testSlope(7) * testSlope(1, true)).str_repeat(PHP_EOL, 2);
+echo (testSlope() * testSlope(3) * testSlope(5) * testSlope(7) * testSlope(1, 2)).str_repeat(PHP_EOL, 2);
 
 print_r($debug);
