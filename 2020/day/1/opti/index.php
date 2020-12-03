@@ -1,8 +1,6 @@
-<?php
+<?php echo '<pre>';
 
 $input = array_map('trim', file('../input'));
-
-echo '<pre>';
 
 function sum($carry, $item) {
     $carry += $item;

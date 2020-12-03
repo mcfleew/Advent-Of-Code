@@ -1,8 +1,6 @@
-<?php 
+<?php echo '<pre>';
 
 $input = array_map('trim', file('../../input'));
-
-echo '<pre>';
 
 $debug = [];
 
@@ -40,12 +38,12 @@ function testSlope($step = 1, $bottomStep = false) {
     return $countTrees;
 }
 
-echo testSlope().PHP_EOL;
-echo testSlope(3).PHP_EOL;
-echo testSlope(5).PHP_EOL;
-echo testSlope(7).PHP_EOL;
-echo testSlope(1, true).PHP_EOL;
+// echo testSlope().PHP_EOL;
+// echo testSlope(3).PHP_EOL;
+// echo testSlope(5).PHP_EOL;
+// echo testSlope(7).PHP_EOL;
+// echo testSlope(1, true).PHP_EOL;
 
-echo (testSlope() * testSlope(3) * testSlope(5) * testSlope(7) * testSlope(1, true)).PHP_EOL;
+echo (testSlope() * testSlope(3) * testSlope(5) * testSlope(7) * testSlope(1, true)).str_repeat(PHP_EOL, 2);
 
 print_r($debug);
