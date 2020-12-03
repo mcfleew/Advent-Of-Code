@@ -2,6 +2,8 @@
 
 $input = array_map('trim', file('../../input'));
 
+echo '<pre>';
+
 $passwordsValid = 0;
 
 foreach($input as $row) {
