@@ -1,6 +1,6 @@
 <?php echo '<pre>';
 
-include 'utils.php';
+include 'util.php';
 
 $input = array_map('trim', file('../input'));
 
