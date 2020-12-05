@@ -14,18 +14,13 @@ foreach($boardingPasses as $boardingPass) {
     $minCol = 0;
     $maxCol = 7;
 
-    // echo $boardingPass.PHP_EOL;
     foreach($characters as $key => $character) {
         if ($key < 7) {
-            // echo 'MinRow : '.$minRow.'; MaxRow : '.$maxRow.';'.PHP_EOL;
             if ($character === 'F') $maxRow -= ($maxRow - $minRow + 1) / 2;
             if ($character === 'B') $minRow += ($maxRow - $minRow + 1) / 2;
-            // echo 'MinRow : '.$minRow.'; MaxRow : '.$maxRow.';'.PHP_EOL.PHP_EOL;
         } else {
-            // echo 'MinCol : '.$minCol.'; MaxCol : '.$maxCol.';'.PHP_EOL;
             if ($character === 'R') $maxCol -= ($maxCol - $minCol + 1) / 2;
             if ($character === 'L') $minCol += ($maxCol - $minCol + 1) / 2;
-            // echo 'MinCol : '.$minCol.'; MaxCol : '.$maxCol.';'.PHP_EOL.PHP_EOL;
         }
     }
 
@@ -34,4 +29,12 @@ foreach($boardingPasses as $boardingPass) {
     $seatIds[] = $seatId;
 }
 
-echo max($seatIds);
+sort($seatIds);
+
+for ($mySeat = 0; $mySeat <= count($seatIds); $mySeat++) {
+    if (!in_array($mySeat, $seatIds)) {
+        if (in_array($mySeat-1, $seatIds) && in_array($mySeat+1, $seatIds)) {
+            echo $mySeat; exit;
+        }
+    }
+}
