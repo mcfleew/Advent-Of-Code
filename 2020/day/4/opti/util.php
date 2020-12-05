@@ -9,7 +9,7 @@ function getRequiredFields($requiredFields) {
 }
 
 function splitBySpaceOrNewLine($credential) {
-    return  preg_split('/\s|\n/', $credential);
+    return preg_split('/\s|\n/', $credential);
 }
 
 function getCredentialFields($credential) {
